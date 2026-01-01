@@ -64,4 +64,59 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     fetchPokemonList();
+
+    const suggestions = [
+        "Pikachu", "Charizard", "Bulbasaur", "Squirtle", 
+        "Jigglypuff", "Meowth", "Psyduck", "Snorlax", 
+        "Eevee", "Mewtwo", "Ditto", "Gengar"
+    ];
+
+    const carouselEl = document.getElementById('carousel');
+    const leftBtn = document.getElementById('left-btn');
+    const rightBtn = document.getElementById('right-btn');
+
+    leftBtn.addEventListener('click', () => {
+        carouselEl.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+        carouselEl.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+
+    const handleScrollButtons = () => {
+        if (carouselEl.scrollLeft <= 0) {
+            leftBtn.classList.add('hidden');
+        } else {
+            leftBtn.classList.remove('hidden');
+        }
+
+        const maxScroll = carouselEl.scrollWidth - carouselEl.clientWidth;
+        
+        if (Math.ceil(carouselEl.scrollLeft) >= maxScroll) {
+            rightBtn.classList.add('hidden');
+        } else {
+            rightBtn.classList.remove('hidden');
+        }
+    };
+
+    carouselEl.addEventListener('scroll', handleScrollButtons);
+
+    handleScrollButtons();
+
+    function createSuggestions() {
+        suggestions.forEach(pokemonName => {
+            const button = document.createElement('button');
+            button.classList.add('chip');
+            button.textContent = pokemonName;
+
+            button.addEventListener('click', () => {
+                searchInputEl.value = pokemonName;
+                // searchPokemon(); 
+            });
+
+            carouselEl.appendChild(button);
+        });
+    }
+
+    createSuggestions();
 });
