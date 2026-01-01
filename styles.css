@@ -116,8 +116,99 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* حركة بسيطة للظهور */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.suggestions-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+.suggestions-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.carousel {
+    display: flex;      
+    gap: 10px;           
+    overflow-x: auto;   
+    padding-bottom: 10px;
+    white-space: nowrap;
+    
+    scrollbar-width: none; 
+}
+.carousel::-webkit-scrollbar {
+    display: none; 
+}
+
+.chip {
+    background-color: #f1f3f5;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    color: #333;
+}
+
+.chip:hover {
+    background-color: #007bff; 
+    color: white;
+    transform: scale(1.05); 
+}
+
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.carousel {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 40px; 
+    
+    scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    background-color: rgba(255, 255, 255, 0.8); 
+    border: 1px solid #ddd;
+    border-radius: 50%; 
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    z-index: 10; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+#left-btn { left: 0; }
+#right-btn { right: 0; }
+
+.hidden {
+    display: none;
 }
