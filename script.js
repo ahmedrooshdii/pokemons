@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     const searchBtnEl = document.getElementById('search-btn');
     const searchInputEl = document.getElementById('input-field');
 
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const pokemonNames = pokemonList.map(pokemon => capitalizeFirstLetter(pokemon.name));
             console.log("First 151 Pokémon:", pokemonNames);
+            return pokemonNames;
 
         } catch (error) {
             console.error("Error fetching Pokémon list:", error);
@@ -63,13 +64,13 @@ document.addEventListener('DOMContentLoaded', function() {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    fetchPokemonList();
+    const suggestions = await fetchPokemonList();
 
-    const suggestions = [
-        "Pikachu", "Charizard", "Bulbasaur", "Squirtle", 
-        "Jigglypuff", "Meowth", "Psyduck", "Snorlax", 
-        "Eevee", "Mewtwo", "Ditto", "Gengar"
-    ];
+    // const suggestions = [
+    //     "Pikachu", "Charizard", "Bulbasaur", "Squirtle", 
+    //     "Jigglypuff", "Meowth", "Psyduck", "Snorlax", 
+    //     "Eevee", "Mewtwo", "Ditto", "Gengar"
+    // ];
 
     const carouselEl = document.getElementById('carousel');
     const leftBtn = document.getElementById('left-btn');
