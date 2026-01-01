@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     async function searchPokemon() {
-        const nameInput = document.getElementById("input-field");
-        const name = document.getElementById("input-field").value.trim().toLowerCase();
+        const name = searchInputEl.value.trim().toLowerCase();
         
         const figureEl = document.getElementById('figure');
         const errorEl = document.getElementById('error-box');
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             imgEl.src = imgSrc;
             nameEl.textContent = data.name.toUpperCase();
             figureEl.style.display = 'block';
-            nameInput.value = '';
+            searchInputEl.value = '';
 
         } catch (error) {
             const errorEl = document.getElementById('error-box');
